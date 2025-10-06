@@ -8,3 +8,16 @@ resource "aws_vpc" "main" {
     Name = "hello-world-vpc"
   }
 }
+
+resource "aws_subnet" "main" {
+  vpc_id = aws_vpc.main.id
+  cidr_block = "10.0.0.0/24"
+
+  availability_zone = "ap-northeast-1a"
+
+  map_public_ip_on_launch = true
+
+  tags = {
+    Name = "hello,world-public-subnet"
+  }
+}
