@@ -30,3 +30,25 @@ resource "aws_security_group" "app_sg" {
     Name = "hello-world-sg"
   }
 }
+
+data "aws_ami" "ecs_optimized_linux_2" {
+    most_recent = true
+    owners = [ "amazon" ]
+
+    filter {
+      name = "name"
+      values = [ "amzn2-ami-hvm-*-x86_64-ebs" ]
+    }
+}
+
+resource "aws_instance" "app.server" {
+  ami = data.aws_ami.amazon_linux_2.id
+  instance_type = "t2.micro"
+  subnet_id = aws_subnet.public.id
+  vpc_security_group_ids = [aws_security_group.app_sg.id]
+  key_name = "terraform-key"
+
+  tags = {
+    Name = "hello-world-app-serever"
+  }
+}
