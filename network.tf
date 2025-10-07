@@ -37,7 +37,9 @@ resource "aws_route_table" "public" {
     gateway_id = aws_internet_gateway.main.id
   }
 
-  tags = "hello-world-public-rtb"
+  tags = {
+    Name = "hello-world-public-rtb"
+  }
 }
 
 resource "aws_route_table_association" "public" {
