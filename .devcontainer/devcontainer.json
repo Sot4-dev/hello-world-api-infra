@@ -13,7 +13,7 @@
 		"source=${localEnv:HOME}${localEnv:USERPROFILE}/.aws,target=/home/vscode/.aws,type=bind,consistency=cached"
 	],
 
-	
+	"postCreateCommand": "sudo apt-get update && sudo apt-get install -y curl && curl -L -o aws-vault https://github.com/99designs/aws-vault/releases/download/v7.2.0/aws-vault-linux-amd64 && chmod +x aws-vault && sudo mv aws-vault /usr/local/bin/"
 	// ↑↑↑ ここまで ↑↑↑
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
