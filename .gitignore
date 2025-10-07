@@ -13,6 +13,7 @@ crash.log
 # patterns, if desired, to include specific files (*.tfvars areGitignored by default)
 *.tfvars
 *.tfvars.json
+*.auto.tfvars
 
 # Ignore override files as they are usually used for local testing or development.
 override.tf
