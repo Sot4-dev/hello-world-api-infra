@@ -47,6 +47,7 @@ resource "aws_instance" "app_server" {
 
   user_data = <<-EOF
               #!/bin/bash
+              sleep 15
 
               sudo systemctl start docker
               sudo systemctl enable docker
