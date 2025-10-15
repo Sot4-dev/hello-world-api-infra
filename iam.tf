@@ -11,7 +11,7 @@ data "aws_iam_policy_document" "ec2_assume_role_policy" {
 
 resource "aws_iam_role" "ec2_role" {
   name = "ec2-ecr-pull-role"
-  assume_role_policy = data.aws_iam_policy_document.ec2_assume_role_policy
+  assume_role_policy = data.aws_iam_policy_document.ec2_assume_role_policy.json
 
   tags = {
     Name = "EC2 ECR Pull Role"
