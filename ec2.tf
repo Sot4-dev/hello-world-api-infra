@@ -52,7 +52,7 @@ resource "aws_instance" "app_server" {
               sudo systemctl start docker
               sudo systemctl enable docker
 
-              aws ecr get-login-password -region ${var.primary_region} | sudo docker login --username AWS --password-stdin ${data.aws_caller_identity.current.account_id}.dkr.ecr.${var.primary_region}.amazonaws.com
+              aws ecr get-login-password --region ${var.primary_region} | sudo docker login --username AWS --password-stdin ${data.aws_caller_identity.current.account_id}.dkr.ecr.${var.primary_region}.amazonaws.com
               docker run -d -p 80:5000 ${data.aws_caller_identity.current.account_id}.dkr.ecr.${var.primary_region}.amazonaws.com/hello-world-api:latest
               EOF
   tags = {
